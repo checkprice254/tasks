@@ -22,8 +22,8 @@ const navbar = async () => {
         <div className="flex items-center space-x-4 gap-10 ">
           <div>My Site, user </div>
           <Link href="/">Home</Link>
-          <Link href="/create">Create User</Link>
-          <Link href="/ClientMember">Client Member</Link>
+          <Link href="/create">Create Task</Link>
+
           <DropdownMenu />
           <PersonCircle className="w-6 h-6 cursor-pointer" />
           {session ? (

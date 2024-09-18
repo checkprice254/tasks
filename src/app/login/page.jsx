@@ -27,11 +27,13 @@ export default function Login() {
       });
       if (!res.ok) {
         //setError("invalid credentials");
-        setTimeout(setError("invalid credentials"), 9000);
-        //location.reload();
+        setError("invalid credentials");
+        setTimeout(3000, location.reload());
+
+        //router.refresh();
       } else {
         // Handle successful sign up (e.g., redirect to login page)
-        setTimeout(9000);
+        setTimeout(3000);
         setError("Sign up successful!");
         router.replace("/");
       }
@@ -141,7 +143,7 @@ export default function Login() {
                   {" "}
                   Don`t have an account?
                   <Link
-                    href="/Register"
+                    href="/register"
                     className="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold"
                   >
                     Register here

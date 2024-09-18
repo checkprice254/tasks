@@ -4,8 +4,11 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSession } from "next-auth/react";
 
 function DeleteBlock(task) {
+  const { data: session, status } = useSession();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -27,30 +30,34 @@ function DeleteBlock(task) {
 
   return (
     <>
-      <Button variant="danger" onClick={handleShow}>
-        delete
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>delete task</Modal.Title>
-        </Modal.Header>
-        <Modal.Body variant="warning">
-          Are you sure you want to delete this task?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+      {session && session.user.role === "admin" && (
+        <>
+          <Button variant="danger" onClick={handleShow}>
+            delete
           </Button>
-          <button
-            type="button"
-            className=" bg-red-400 hover:bg-red-600 text-white font-medium py-1.5 px-2 rounded focus:outline-none focus:shadow-outline"
-            onClick={deleteTicket}
-          >
-            Delete
-          </button>
-        </Modal.Footer>
-      </Modal>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>delete task</Modal.Title>
+            </Modal.Header>
+            <Modal.Body variant="warning">
+              Are you sure you want to delete this task?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <button
+                type="button"
+                className=" bg-red-400 hover:bg-red-600 text-white font-medium py-1.5 px-2 rounded focus:outline-none focus:shadow-outline"
+                onClick={deleteTicket}
+              >
+                Delete
+              </button>
+            </Modal.Footer>
+          </Modal>
+        </>
+      )}
     </>
   );
 }

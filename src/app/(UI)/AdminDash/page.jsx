@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import TaskDash from "./TaskDash";
 
-export default function Dash() {
+export default function AdminDash() {
   const [allTaks, setallTaks] = useState([]);
   useEffect(() => {
     async function getallTaks() {

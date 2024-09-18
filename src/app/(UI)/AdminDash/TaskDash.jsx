@@ -1,7 +1,11 @@
 import TaskEdit from "./TaskEdit";
 import DeleteTask from "./DeleteTask";
+//import { getServerSession } from "next-auth";
+//import { authOptions } from "../../api/auth/[...nextauth]/route";
 
 export default function TaskDash(task) {
+  //const session = await getServerSession(authOptions);
+
   return (
     <div className=" max-w-fit m-2 py-8 px-8 bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       <div className="text-center space-y-2 sm:text-left">

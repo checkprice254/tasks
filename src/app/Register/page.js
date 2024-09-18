@@ -35,7 +35,7 @@ export default function Register() {
         console.log("Failed to create Account");
         setError(errorData.message);
         setTimeout(3000);
-        location.reload();
+        router.replace("/register");
         // Handle error, e.g., show an error message
       }
     } catch (error) {
@@ -131,6 +131,8 @@ export default function Register() {
                     onChange={handleChange}
                     className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500"
                     placeholder="Enter Email Address"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="Please enter a valid email address in the format 'name@domain.com'."
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
